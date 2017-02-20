@@ -12,7 +12,7 @@ Luo uusi kansio, kopioi koodi ja tallenna se .go-päätteiseen tiedostoon, joka 
 
 ### Miten ohjelma toimii?
 
-Tämä ohjelmä piirtää viivansa OpenGL:llä. Se ei ole aivan helpoin tapa, mutta esimerkiksi tietokonepelit yleensä tehdään samalla tavalla.
+Tämä ohjelmä piirtää viivansa OpenGL:llä. Se ei ole aivan helpoin tapa, mutta esimerkiksi tietokonepelejä on tehty paljon samalla tavalla.
 
 ```Go
 gl.Begin(gl.LINES)
@@ -28,9 +28,11 @@ gl.Vertex2d(0, 0.5)
 
 `gl.Vertex2d` piirtää kaksiulotteisen pisteen. On olemassa myös `gl.Vertex3d`, joka piirtää kolmiulotteisen pisteen. Yllättävää kyllä, viivassa on kaksi pistettä, joten Vertexiä pitää kutsua kahdesti yhtä viivaa varten.
 
-Numerot kertovat pisteen sijainnin. `0, 0` on keskellä ikkunaa. Ensimmäinen koordinaatti kasvaa oikealle mentäessä ja toinen ylös mentäessä. Ikkunan reunassa koordinaattit ovat `1` tai `-1`.
+Numerot kertovat pisteen sijainnin. `0, 0` on keskellä ikkunaa. Ensimmäinen koordinaatti kasvaa oikealle mentäessä ja toinen ylös mentäessä. Ikkunan reunassa kukin koordinaatti on `1` tai `-1`.
 
-`gl.Color3d` valitsee värin jolla ollaan piirtämässä. Väri on siinä mielessä kolmiulotteinen, että siinä on kolme osaa: punainen, vihreä ja sininen. Tämähän kuulostaa aivan hullulta! Se johtuu siitä, että `3d` ei oikeasti tarkoita kolmiulotteista, vaan 3 double. Tyyppiä `float64` joskus kutsutaan nimellä double.
+`gl.Color3d` valitsee värin jolla ollaan piirtämässä. Väri on siinä mielessä kolmiulotteinen, että siinä on kolme osaa: punainen, vihreä ja sininen.
+
+Mikä ihmeen kolmiulotteinen väri? Tässä vaiheessa lienee hyvä paljastaa, että `3d` ei oikeasti tarkoita kolmiulotteista, vaan että funktio ottaa 3 doublea. Tyyppiä `float64` joskus kutsutaan nimellä double.
 
 ```Go
 gl.End()
@@ -49,8 +51,16 @@ Ensimmäisenä argumenttina `Run` ottaa funktion, joka kertoo mitä tehdään ku
 ### Tehtäviä
 Voit tehdä kaikki, tai vain kiinnostavimmalta kuulostavat.
 
+#### Muotoja
  - Piirrä kaksi viivaa lisää niin, että muodostuu neliö.
  - Piirrä kolmio.
  - Piirrä risti.
  - Piirrä ympyrä. (Tämä on vaikea vaikka osaisit for-silmukan!)
  - Piirrä tikku-ukko.
+
+#### Värejä
+ - Tee toisesta viivasta vihreä ja toisesta sininen
+ - Tee viivoista harmaat
+ - Tee viivan alku- ja loppupisteestä eri värinen
+ - Selvitä miten värit cyan, magenta ja keltainen saadaan aikaan
+ - Etsi Googlesta color picker, ja ota siitä RGB-arvot haluamallesi värille (Sen paletin kolme suuntaa ovat muuten hue, saturation, value eli HSV.)

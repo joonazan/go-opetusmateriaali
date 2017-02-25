@@ -1,28 +1,38 @@
-# Lisää viivoja
+# Vikkelä viiva
 
-Tämän ohjelmän nimi on `aalto`. En liittänyt kuvaa tästä ohjelmasta, sillä se näyttää eri aikoihin erilaiselta.
+$$$liike/main.go$$$
 
-Muistatko kun sanoin:
+En liittänyt kuvaa tästä ohjelmasta, sillä se näyttää eri aikoihin erilaiselta.
+
+Ainoa merkittävä ero aiempaan viivoja piirtävään ohjelmaan on tämä rivi:
+
+```Go
+	gl.Vertex2d(aika-1, 0)
+```
+
+Siinä luodun pisteen x-koordinaatti riippuu ajasta. Kun aika on nolla, se on `-1`. Ajan kasvaessa x-koordinaattikin kasvaa. Mutta mistä tämä aika tulee?
+
+Aiemmin kirjoitin:
 
 > Runin ottaman funktion on pakko ottaa yksi `float64`-tyyppinen argumentti, eikä se saa palauttaa mitään.
 
-Tämä argumentti kertoo ajan ohjelman käynnistymisestä sekunteina. Käyttämällä tätä aikaa pisteiden paikkojen laskemiseen, saadaan asiat liikkumaan.
+Run-funktio lupaa kutsua sille annettua funktiota ajalla ohjelman käynnistymisestä sekunteina. Piirrä-funktion ensimmäiselle argumentille on annettu nimi `aika` määrittelyn alussa:
 
-Käytän koodissa siniä(`math.Sin`) aallon pisteiden korkeuden laskemiseen. Sini muuttaa luvun luvuksi välillä [-1, 1] yksitoikkoisen aaltoilevasti. Sinun ei ole pakko käyttää siniä omassa koodissasi.
+```Go
+func piirrä(aika float64) {
+```
 
-`gl.LINE_STRIP` tarkoittaa että piirretään viivoja pötkönä, eli edellisen viivan loppu on seuraavan alku. Lisäksi tästä koodista löytyy lähinnä [`for`](../ohjeet/for.md) ja [_muuttuja_](../ohjeet/var.md). `const pisteitä = 200` aiheuttaa sen että sana pisteet korvataan numerolla 200.
+### Sykli
 
-Funktio `nollastaYhteen` ottaa luvun ja palauttaa luvun nollan ja yhden väliltä sinin lailla aaltoilevasti. Tein sen, koska värin suurin mahdollinen kirkkaus on 1.0 ja pienin 0.0.
+Kokeile vaihtaa viivan alkupisteeksi `(0, 0)` ja loppupisteeksi `(0.5*math.Cos(aika), 0.5*math.Sin(aika))`.
+
+Käytän koodissa siniä(`math.Sin`) aallon pisteiden korkeuden laskemiseen. Sini muuttaa luvun luvuksi välillä [-1, 1] yksitoikkoisen aaltoilevasti. Kosini(`math.Cos`) on muuten samanlainen, mutta se on hieman siniä jäljessä. Tässä hyödynnetään niiden ominaisuuksia ympyrän kaaren laskemiseen, mutta tavallisempaa on, että niitä ripotellaan kaikkialle minne halutaan pehmeitä edestakaisia muutoksia.
 
 ### Tehtäviä
 
- - Tee aallosta tiheampi, harvempi, nopeampi tai hitaampi.
- - Tee jokin kuvio, esim. neliö, joka liikkuu kohti ikkunan oikeaa reunaa.
- - Tee monta aaltoa.
- - Tee kuvio, joka venyy.
- - Tee pyörivä kuutio (Tee tämä, jos sait edellisessä kohdassa tehtyä ympyrän.)
- - Tee aallon eri kohdista eri värisiä. ![sateenkaariaalto](sateenkaariaalto.png)
-
-Vinkki toiseen tehtävään:
-
->Aloita neliöstä, jonka teit edellisissä tehtävissä. Lisää neliön jokaisen pisteen ensimmäiseen koordinaattiin aika kerrottuna nopeudella, jolla haluat pisteen liikkuvan.
+ - Tee viivaa monimutkaisempi kuvio, joka venyy.
+ - Laita värit muuttumaan.
+ - Piirrä monta pistettä ja kokeile vaihtaa `gl.LINES` tilalle `gl.LINE_STRIP` tai `gl.TRIANGLE_FAN`.
+ - Tee kuvio, joka liikkuu edestakaisin.
+ - Opettele for-silmukka ja piirrä sillä ympyrä.
+ - Piirrä täyttyvä latausympyrä.
